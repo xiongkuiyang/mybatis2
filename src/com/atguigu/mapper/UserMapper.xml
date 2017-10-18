@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mapper.UserMapper">
+  <select id="getUserById" resultType="com.atguigu.bean.User" parameterType="int">
+    select id,last_name lastName,sex from t_user where id = #{id}
+  </select>
+  
+  <select id="getAllUsers" resultType="com.atguigu.bean.User">
+	  select id,last_name lastName,sex from t_user
+  </select>
+  
+  <insert id="saveUser" parameterType="com.atguigu.bean.User">
+  	insert into t_user(last_name,sex)
+  	values(#{lastName},#{sex}) 
+  </insert>
+  
+  <delete id="deleteUserById">
+  	delete from t_user where id = #{id}
+  </delete>
+  
+  <update id="updateUser">
+  	update t_user set last_name = #{lastName}, sex = #{sex}
+  	where id = #{id}
+  </update>
+</mapper>
